@@ -1,0 +1,85 @@
+reverse string
+ public class Program
+    {
+
+        public class soultion
+        {
+            public string reverseString(string? value)
+            {
+                string? isNull = null;
+                if (value != null)
+                {
+
+                    //adding a char array and changing string to arrat=y
+                    char[] changetoChar = value.ToCharArray();
+                    //using array reverse method
+                    Array.Reverse(changetoChar);
+                    //changing from char back to new string
+                    string backtoString = new string(changetoChar);
+                    //print new reversed string
+                    Console.WriteLine("Reversed String is: " + backtoString);
+                }
+                
+
+                return isNull;
+
+
+
+            }
+
+
+            public string switchString(string? value) {
+
+                char[] changeToChar = value.ToCharArray();
+                int left = 0;
+                int right = value.Length - 1; // [0] k, [1] i, [2] d, [3] u, [4] s   
+
+                if (right >  left) //5 > 0
+                {
+                    // Swap characters at positions i and j.
+                    char temp = changeToChar[right];    //k because its 5
+                    changeToChar[left] = changeToChar[right]; // kidus[k] = idusk
+                    changeToChar[right] = temp; //[4] = s
+                
+                right--;
+                left++; 
+                }
+                return new string(changeToChar);
+                
+                    
+                
+            }
+
+            public string usingForloop(string? value) {
+
+                char[] charArray = value.ToCharArray();
+                for (int i = 0, j = value.Length - 1; i < j; i++, j--)
+                {
+                    // Swap characters at positions i and j.
+                    char temp = charArray[i];
+                    charArray[i] = charArray[j];
+                    charArray[j] = temp;
+                }
+
+                return new string (charArray);   
+            }
+
+
+        }
+
+
+
+        public static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            soultion s= new soultion(); 
+            Console.WriteLine(s.switchString(input));
+
+            string value = Console.ReadLine();
+            soultion s1 = new soultion();
+            s1.reverseString(value);
+
+
+        }
+
+    }

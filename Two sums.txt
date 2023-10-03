@@ -1,0 +1,46 @@
+Two Sums from an array to give you a target number. 
+
+
+  public class Program
+    {
+        public int twoSums(int[] myArray, int target)
+        {
+
+            int sum = 0;
+
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                for (int j = i; j < myArray.Length; j++)
+                {
+                    sum = myArray[i] + myArray[j];
+               
+                    if (sum == target)
+                {
+                    return sum;
+                        break;
+                }
+
+                }
+
+                
+            }
+            return sum;
+
+
+        }
+
+
+
+
+        public static void Main(string[] args)
+        {
+
+            int[] myArray = { 2, 11, 7, 15 };
+            Program program = new Program();
+            program.twoSums(myArray, 9);
+            Console.WriteLine("value is: " + program.twoSums(myArray, 9));
+            Console.ReadLine();
+
+        }
+
+    }

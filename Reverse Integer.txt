@@ -1,0 +1,52 @@
+Reverese Integer
+
+
+ public class Program
+    {
+      
+        public class soultion
+        {
+            public int reverseInteger(int value)
+            {
+                 //checks to see if its negative
+                bool ifNegative = value < 0;    
+
+                //convert it to string
+                string stringInt = Math.Abs(value).ToString();    
+
+                //change string to Char
+                char[] charToString = stringInt.ToCharArray();
+
+               
+                // Reverse the characters in the array
+                Array.Reverse(charToString);
+
+                //Changed it back to string
+                string reversedString = new string (charToString);
+
+                if (int.TryParse(reversedString, out int newInteger))
+                {
+                    return ifNegative ? -newInteger : newInteger;
+                }
+                else
+                    return 0;
+            }
+        }
+
+
+            public static void Main(string[] args)
+        {
+
+
+            int value = 123;
+            soultion s = new soultion();    
+            int revesedInt = s.reverseInteger(value);
+            Console.WriteLine("Reversed value is: " + revesedInt);
+            Console.ReadLine();
+
+        }
+
+    }
+ 
+
+
