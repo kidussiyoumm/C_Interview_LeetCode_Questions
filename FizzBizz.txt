@@ -1,0 +1,49 @@
+Write a program that prints the numbers from 1 to 100. But for multiples of three, print "Fizz" 
+instead of the number, and for the multiples of five, print "Buzz." 
+For numbers that are multiples of both three and five, print "FizzBuzz."
+
+
+namespace ConsoleApp1
+{ 
+    public class Program
+    {
+
+        public class soultion
+        {
+            public static void fizzBiss(int userInput)
+            {
+
+                for (int i = 0; i < userInput; i++)
+                {
+                    if (userInput % 3 == 0)
+                    {
+                        Console.WriteLine("Fizz");
+                    }
+                    else if (userInput % 5 == 0)
+                    {
+                        Console.Write("Bizz");
+                    }
+                    else if (userInput % 3 == 0 && userInput % 5 == 0)
+                    {
+                        Console.WriteLine("FizzBizz");
+                    }
+
+                    
+                }
+
+                    Console.WriteLine("It is not a fizzBizz sorry try again!");
+            }
+
+        }
+
+        public static void Main(string[] args)
+        {
+
+            soultion.fizzBiss(8);
+
+
+        }
+
+    }
+
+}

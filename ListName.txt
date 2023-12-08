@@ -1,0 +1,46 @@
+Find a name from a list of string using List. 
+
+ public class soultion
+        {
+            public void isListName(List<string> myList)
+            {
+                foreach(var item in myList)
+                {
+                    Console.WriteLine(item);
+                }
+               
+            }
+
+            public void findName(List<string> myList, string name)
+            {
+                foreach(var item in myList)
+                {
+                    if(item == name)
+                    {
+                        Console.WriteLine("Found name:" + name);
+                    }
+                }
+            }
+
+            public static void Main(string[] args)
+            {
+                List<string> nameList = new List<string>();
+                nameList.Add("kidus");
+                nameList.Add("Mike");
+                nameList.Add("Jerry");
+                nameList.Add("Aman");
+               //string target = "kidus";
+               //string ? foundName = nameList.FirstOrDefault(name => name == target);
+               
+
+                soultion s = new soultion();
+                s.isListName(nameList);
+                s.findName(nameList, "kidus");
+                
+
+            }
+
+        }
+
+
+    }

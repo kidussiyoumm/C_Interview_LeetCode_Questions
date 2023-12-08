@@ -1,0 +1,35 @@
+Find missing number from a given array. 
+
+namespace ConsoleApp1
+{
+
+ public class Program
+    {
+        public class Test
+        {
+            public static int findMisssingNum(int[] array, int n)
+            {
+                //int n = array.Length; 
+                int missingIndex = n * (n + 1) / 2;  //5
+                int sumOfNum = 0;
+
+                foreach (int i in array)
+                {
+                    sumOfNum += i;
+                }
+             
+                return missingIndex - sumOfNum ;
+            }
+        }
+
+        public static void Main(string[] args)
+        {
+            int[] myArray = { 1, 2,3, 4, 5, 7};
+            int n = myArray.Length + 1;
+            int myMissingnum = Test.findMisssingNum(myArray, n); 
+            Console.WriteLine($"your missing number is : {myMissingnum}");
+            
+        }
+    }
+	
+}

@@ -1,0 +1,50 @@
+Check weather if the value passed is a Palindrome or not. 
+
+
+public int isPalindrome(int value)
+            {
+
+                try
+                {
+                    string normalString = value.ToString();
+
+                    //Change the string to character and reverse it to compare the values
+                    char[] chars = normalString.ToCharArray();
+                    Array.Reverse(chars);
+
+                    string reversedString = new string(chars);
+
+                    if (reversedString == normalString)
+                    {
+                        Console.WriteLine("This input is a Palindrome" + value);
+                    }
+                    else
+                    {
+                        Console.WriteLine("This isn't a Palindrome value");
+                    }
+
+               
+                }
+
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+
+                }
+                return value;
+            }
+            public static void Main(string[] args)
+            {
+
+                    int value = -121;
+                soultion s = new soultion();
+                    s.isPalindrome(value);  
+            
+
+            }
+
+        }
+
+
+    }

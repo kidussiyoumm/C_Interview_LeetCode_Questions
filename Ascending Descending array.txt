@@ -1,0 +1,77 @@
+Takes in a string and converts it to a int array 
+from there you can change the array to ascending or descending numbers in an array. 
+
+ public class Program
+    {
+        public class Test
+        {
+            public static int[] ConvertStringToArray()
+            {
+                Console.WriteLine("Enter a list of numbers... ");
+                string input = Console.ReadLine();
+
+                // Making it a string array with ' '
+                string[] stringNumber = input.Split(' ');
+
+                // Using the string length to determine the length of the array
+                int[] numbers = new int[stringNumber.Length];
+
+                for (int i = 0; i < stringNumber.Length; i++)
+                {
+                    if (int.TryParse(stringNumber[i], out int number))
+                    {
+                        numbers[i] = number;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Value entered is not correct. Try again!");
+                        return null;
+                    }
+                }
+
+                foreach (int number in numbers)
+                {
+                    Console.WriteLine(number);
+                }
+
+                return numbers;
+            }
+
+            public static void AscendingSort()
+            {
+                int[] numbers = ConvertStringToArray();
+                if (numbers != null)
+                {
+                    Array.Sort(numbers);
+                    Console.WriteLine("Ascending Order:");
+                    foreach (int number in numbers)
+                    {
+                        Console.WriteLine(number);
+                    }
+                }
+            }
+
+            public static void DescendingArray()
+            {
+                int[] numbers = ConvertStringToArray();
+
+                if (numbers != null)
+                {
+                    Console.WriteLine("Descending Order:");
+                    Array.Sort(numbers);
+                    Array.Reverse(numbers);
+                    foreach (int number in numbers)
+                    {
+                        Console.WriteLine(number);
+                    }
+                }
+            }
+        }
+
+        public static void Main(string[] args)
+        {
+            Test.AscendingSort();
+            Test.DescendingArray();
+        }
+    }
+}

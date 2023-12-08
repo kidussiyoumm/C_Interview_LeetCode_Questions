@@ -1,0 +1,64 @@
+using RestSharp;
+using System;
+using System.ComponentModel.Design;
+
+namespace ConsoleApp1
+{
+    public class Program
+    {
+
+        public class soultion
+        {
+            public static bool isPrimeNumber(int userInput)
+            {
+                Console.WriteLine("User input is " + userInput);
+               
+                bool isPrime = true;
+
+                if(userInput == 0 || userInput == 1)
+                {
+                    isPrime = false;
+                    Console.WriteLine("wrong user input");
+                    
+                }
+
+                //this will start from 2 to all the way to the user input max number 
+                for(int i = 2; i <= userInput; i++) //5
+                {
+                    //aslo doing the same thing 
+                    for(int j = 2; j <= 2; j++) // 3
+                    {
+                        if(i % j == 0)
+                        {
+                            isPrime = false;
+                            break ;
+                        }
+
+                    }
+                    if(isPrime)
+                    {
+                        Console.WriteLine(i);
+
+                    }
+                    isPrime = true;
+
+                }
+                return isPrime;
+               Console.ReadLine();
+            }
+
+          
+            }
+
+            public static void Main(string[] args)
+            {
+                
+                soultion s = new soultion();
+            soultion.isPrimeNumber(9);
+
+            }
+
+        }
+
+
+    }
