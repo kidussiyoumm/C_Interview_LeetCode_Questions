@@ -1,0 +1,45 @@
+ 
+Given an unsorted integer array, find the smallest missing positive integer?
+input [1,2,0]
+output: 3
+
+ public class Program
+    {
+        public int FirstMissingPositive(int[] number)
+        {
+            // we first would want to make sure that all numbers are positive in the array
+            // second make them all distinct values and make them an array 
+
+            var positiveNumber = number.Where(num => num > 0).Distinct().ToArray();
+            Array.Sort(positiveNumber); //Sorts it in ascending numbers
+
+            int result = 1;
+
+            //goes throught the list inside the array length
+            for (int i = 0; i < positiveNumber.Length; i++)
+            {
+                //from the forloop each i value should be greater than 1
+                if (positiveNumber[i] != result)
+                    return result;
+                result++;
+
+
+               
+            }
+           return result;
+        }
+
+
+
+
+
+        public static void Main(string[] args)
+        {
+            Program sol = new Program();
+            int[] myarray = { 1, 2, 0 };
+            int result = sol.FirstMissingPositive(myarray);
+            Console.WriteLine(result);
+
+
+        }
+    }
