@@ -1,0 +1,71 @@
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', 
+determine if the input string is valid.
+
+public class Program
+    {
+
+        public bool IsValid(string input)
+        {
+           
+
+            Stack<char> opeaningPernthesis = new Stack<char>();
+
+            foreach (char bracket in input)
+            {
+                
+
+                if (bracket == '(' || bracket == '{' || bracket == '[')
+                {
+                    opeaningPernthesis.Push(bracket);
+                }
+                else
+                {
+                    
+                   
+                    if(opeaningPernthesis.Count == 0)
+                    {
+                        return false;
+                    }
+
+                    var top = opeaningPernthesis.Pop(); //last input 
+
+                    if (bracket == ')' && top != '('
+                      || bracket == '}' && top != '{'
+                      || bracket == ']' && top != '['
+                       )
+
+
+                        return false;
+
+                }
+                    
+
+             }
+
+            return opeaningPernthesis.Count == 0; //if this expression is false/true it will return the bool value of it. 
+
+        }
+        public void ansVaild()
+        {
+            string expression ="[";
+            if (IsValid(expression))
+            {
+                Console.WriteLine("the input is vaild");
+            }
+            else
+            {
+                Console.WriteLine("the input is invaild");
+            }
+        }
+
+        public static void Main(string[] args)
+        {
+
+            Program ex = new Program();
+
+            
+            
+            ex.ansVaild(); 
+           
+        }
+    }

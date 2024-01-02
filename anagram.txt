@@ -1,0 +1,45 @@
+Given two strings s and t, return true if t 
+is an anagram of s, and false otherwise.
+
+public class Solution {
+    public bool IsAnagram(string s, string t) 
+    {
+         int sLength = s.Length;
+            int tLength = t.Length; 
+            if (s == null || t == null)
+            {
+                return false;
+            }
+            if(s.Length != tLength) 
+            {
+                return false;
+            }
+            char[] sChar = s.ToCharArray();
+            char[] tChar = t.ToCharArray();
+            Array.Sort(sChar);
+            Array.Sort(tChar);
+            var newS = new string(sChar);
+            var newT = new string(tChar);
+
+            if (newS != newT)
+            {
+                return false;
+            }
+
+            return true;
+        
+    }
+	
+	 public static void Main(string[] args)
+        {
+            string s = "anagram";
+            string t = "nagaram";
+
+            Program ex = new Program();
+            var result = ex.IsAnagram(s, t);
+
+            Console.WriteLine(result);
+
+        }
+    
+}

@@ -1,0 +1,118 @@
+To rotate the ListNode k amoount of time to the right tailside. 
+
+
+
+
+namespace ConsoleApp1
+{
+    public class Program
+    {
+        public class ListNode
+        {
+            public int x;
+            public ListNode next;
+            public ListNode(int val)
+            {
+                this.x = val;
+
+            }
+        }
+
+
+
+        public class Solution
+        {
+            public ListNode RotateRight(ListNode head, int k)
+            {
+                //this if condition checks if the head is null
+                //checks if the next is null 
+                //check if K = o 
+                //Because if the condition is True then it should just return itself
+                if (head == null || head.next == null || k == 0)
+                {
+                    return head;
+                }
+
+                //Next we need to decide the lenght of the ListNode
+                int lenght = 1;
+                //we set the tail equal to the head so it can iterate through the listnode
+                ListNode tail = head;
+
+
+                while (tail.next != null)
+                {
+                    tail = tail.next;
+                    lenght++;
+                }
+                //To stop unncessary rotation 
+                k = k % lenght;
+
+                if (k == 0)
+                {
+                    return head;
+                }
+                
+
+                //To find the new head pointer in the ListNode
+                ListNode newhead = head; //create a new a head pointer
+                ListNode newTail = head;
+                //we say lenght - k - 1 because ListNode is a 0 pointer by nature
+                for (int i = 0; i < lenght - k - 1; i++)
+                {
+                    if (newTail == null)
+                    {
+                        return head;
+                    }
+                    newTail = newTail.next; // point to 3 now 
+                }
+                if (newTail == null || newTail.next == null)
+                    {
+                        return head; 
+                    } // going to be pointing to head.next
+
+
+
+
+                //This will preform the actual rotation 
+                newhead = newTail.next; //newhead is 4 and newTail is 3
+                newTail.next = null; // 3 => null
+                tail.next = head;
+
+
+                return newhead; //4 5 1 2 3
+            }
+
+
+            public static void PrintList(ListNode node)
+            {
+                while (node != null)
+                {
+                    Console.Write(node.x + "=>");
+                    node = node.next;
+
+                }
+                Console.WriteLine();
+            }
+
+
+
+            public static void Main(string[] args)
+            {
+
+                ListNode head = new ListNode(1);
+                head.next = new ListNode(2);
+                head.next.next = new ListNode(3);
+                head.next.next.next = new ListNode(4);
+                head.next.next.next.next = new ListNode(5);
+
+
+                Solution ex = new Solution();
+                int k = 2;
+                ListNode rotatedHead = ex.RotateRight(head, k);
+
+                Console.WriteLine("Roated Link list is as follows: ");
+                PrintList(rotatedHead);
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all 
+non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters 
+and numbers.
+
+Given a string s, return true if it is a palindrome, or false otherwise.
+    public class solution {
+        public static bool IsPalindrome(string s)
+        {
+            if (s == null || s.Length == 0)
+            {
+                return false;
+            }
+
+            string newString = "";
+            
+            foreach (char newChar in s)
+            {
+                //checks if its a letter, digit or whitespace. and accepts only a letter
+                if (char.IsLetterOrDigit(newChar))
+                {
+                    newString += newChar;
+                   
+                }
+
+            }
+            string toLower = newString.ToLower();
+                
+                //we change it to a char becuase we can't change the a string it is immutable value. 
+                string result = new string(toLower.Reverse().ToArray());    
+
+                if(result == toLower)
+                {
+                    return true;
+                }
+           
+
+            
+               
+            
+            
+            return false;
+        }
+
+        public static void Main(string[] args)
+        {
+            string input = "A man, a plan, a canal: Panama";
+            bool value = IsPalindrome(input);
+            Console.WriteLine(value);
+         
+        }
+    }
