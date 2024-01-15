@@ -1,0 +1,30 @@
+Illustrate recursion in C# using the classic factorial function:
+
+
+public class soultion
+    {
+        static void Main()
+        {
+            int n = 5;
+            int result = Factorial(n);
+
+            Console.WriteLine($"Factorial of {n} is: {result}");
+        }
+
+        static int Factorial(int num)
+        {
+            // Base case: factorial of 0 is 1
+            if (num == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                // Recursive case: num! = num * (num-1)!
+                return num * Factorial(num - 1);
+            }
+        }
+
+
+
+    }

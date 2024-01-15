@@ -1,0 +1,183 @@
+This has HasCycle, ReverseList and has Merge Two Sorted Lists
+
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+
+namespace ConsoleApp1
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+           LinkedList list1 = new LinkedList();
+            list1.AddNode(1);
+            list1.AddNode(2);
+            list1.AddNode(3);
+            list1.AddNode(4);
+            list1.AddNode(5);
+
+
+            LinkedList list2 = new LinkedList();
+            list2.AddNode(3);
+            list2.AddNode(4);
+            list2.AddNode(7);
+            list2.AddNode(8);
+            list2.AddNode(9);
+
+            
+
+           list1.PrintList();
+           Console.WriteLine("************************");
+
+            list1.ReverseList();
+            list1.PrintList();
+
+            Console.WriteLine("************************");
+
+            var result = list1.MergeTwoLists(list1.head, list2.head);
+            Console.WriteLine("This is result");
+            list1.PrintList(result);
+
+            var answer = list1.HasCycle(list1.head);
+           Console.WriteLine($"This is a loop: {answer}");
+
+
+
+        }
+
+        public class ListNode
+        {
+            public int value;
+            public ListNode next;
+
+            public ListNode(int value = 0 , ListNode next = null)
+            {
+                this.value = value;
+                this.next = next;
+
+            }
+
+        }
+
+        public class LinkedList
+        {
+            public ListNode head; 
+
+
+            public void AddNode(int val)
+            {
+
+                ListNode newNode = new ListNode(val);  
+
+                if(head == null)
+                {
+                    head = newNode;
+                }
+
+                else
+                {
+                    ListNode current = head;
+                    
+                    while(current.next != null)
+                    {
+                        current = current.next;
+                    }
+                    current.next = newNode;
+
+                }
+
+
+            }
+
+            public void ReverseList()
+            {
+                ListNode current = head;
+                ListNode temp;
+                ListNode prev = null;
+
+
+                while(current != null)
+                {
+                    temp = current.next;
+                    current.next = prev;
+                    prev = current;
+                    current = temp;
+
+                }
+
+                head = prev;
+            }
+
+            public bool HasCycle(ListNode head)
+            {
+               
+                ListNode slow = head;
+                ListNode fast = head;
+                if (head == null || head.next == null) return false;
+
+                while(slow != null && fast != null && fast.next != null) 
+                {
+                    slow = slow.next;
+                    fast = fast.next.next;
+
+                    if (slow == fast)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;        
+               
+            }
+
+            public ListNode MergeTwoLists(ListNode list1, ListNode list2)
+            {
+                if (list1 == null) return list2;
+                if (list2 == null) return list1;
+
+                if (list1.value < list2.value)
+                {
+
+                    list1.next = MergeTwoLists(list1.next, list2);
+                    return list1;
+                }
+
+                list2.next = MergeTwoLists(list1, list2.next);
+                return list2;
+
+            }
+
+
+            public void PrintList(ListNode node)
+            {
+                ListNode current = head;
+
+                while(current != null)
+                {
+                    Console.WriteLine(current.value);
+                    current = current.next; 
+                }
+            }
+
+            public void PrintList()
+            {
+                ListNode current = head;
+
+                while (current != null)
+                {
+                    Console.WriteLine(current.value);
+                    current = current.next;
+                }
+            }
+        }
+
+
+      
+
+    }
+}
+
+

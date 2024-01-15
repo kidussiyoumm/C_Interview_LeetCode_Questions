@@ -1,0 +1,56 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace ConsoleApp1
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            string[] anagrams = { "eat", "tea", "tan", "ate", "nat", "bat" };
+            Program sol = new Program();
+
+            IList<IList<string>> result = sol.GroupAnagrams(anagrams);
+
+            foreach(var group in result)
+            {
+                Console.WriteLine(string.Join(", ", group));
+            }
+            
+          
+        }
+
+        public IList<IList<string>> GroupAnagrams(string[] strs)
+        {
+
+            if(strs == null || strs.Length == 0)
+            {
+                return new List<IList<string>>(); 
+            }
+
+            Dictionary<string, List<string>> frequencyStringDictionary = new Dictionary<string, List<string>>();  
+            foreach(var input in  strs)
+            {
+                string sortedWords = new string(input.ToCharArray().OrderBy(c => c).ToArray()); 
+
+                if(frequencyStringDictionary.ContainsKey(sortedWords) )
+                {
+                    frequencyStringDictionary[sortedWords].Add(input);
+                }
+                else
+                {
+                    frequencyStringDictionary[sortedWords] = new List<string>() { input };
+                }
+                
+            }
+
+            return frequencyStringDictionary.Values.ToList<IList<string>>();
+
+        }
+
+
+    }
+}
+
+

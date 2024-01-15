@@ -1,0 +1,49 @@
+Given the head of a singly linked list, reverse the list, and 
+return the reversed list.
+
+ public class soultion
+    {
+        public class ListNode
+        {
+            public int value { get; set; }
+            public ListNode next { get; set; }
+            public ListNode(int value)
+            {
+                this.value = value;
+                this.next = null;
+            }
+        }
+        public ListNode ReverseList(ListNode head)
+        {
+            ListNode previousNode = null;
+            ListNode currentNode = head;
+            ListNode nextNode;
+            while (currentNode != null)
+            {
+                nextNode = currentNode.next;
+                currentNode.next = previousNode;
+                previousNode = currentNode;
+                currentNode = nextNode;
+            }
+            return previousNode;
+        }
+
+
+    
+        public static void Main(string[] args)
+        {
+            ListNode head = new ListNode(1);
+            head.next = new ListNode(2);
+            head.next.next = new ListNode(3);
+
+            soultion sol = new soultion();
+            ListNode reversedList = sol.ReverseList(head);
+
+            while(reversedList != null)
+            {
+                Console.WriteLine(reversedList.value + " ");
+                reversedList = reversedList.next;
+            }
+          
+        }
+    }
