@@ -1,0 +1,58 @@
+Given the root of a binary tree, invert the tree, and return its root.
+
+ 
+
+Example 1: Input: root = [4,2,7,1,3,6,9]
+Output: [4,7,2,9,6,3,1]
+
+ 
+ public TreeNode InvertTree(TreeNode root)
+        {
+            if (root == null) return null;
+
+
+            TreeNode left = InvertTree(root.left);
+            TreeNode right = InvertTree(root.right);
+
+            root.right = left;
+            root.left = right;
+
+
+
+
+            return root;
+        }
+
+        public TreeNode InvertTreeOrder(TreeNode root)
+        {
+            if (root == null) return null;
+
+            Queue<TreeNode> queue = new Queue<TreeNode>();
+            queue.Enqueue(root); //put in the root value in the queue
+
+            while(queue.Count > 0) //while it isn't zero
+            {
+                //the root gets taken out
+                TreeNode currentNode = queue.Dequeue(); //this will add it to the last element of the queue
+
+                //Swap nodes here
+                TreeNode Temp = currentNode.left;
+                currentNode.left = currentNode.right;
+                currentNode.right = Temp;
+
+                if(currentNode.left != null)
+                {
+                    queue.Enqueue(currentNode.left);
+                }
+                if (currentNode.right != null)
+                {
+                    queue.Enqueue(currentNode.right);
+                }
+
+
+               
+
+
+            }
+                    return root; 
+        }

@@ -1,0 +1,178 @@
+This has the Base methods for TreeNode
+ 
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
+
+namespace ConsoleApp1
+{
+    public class Program
+    {
+         public TreeNode root;
+
+        public static void Main(string[] args)
+        {
+            Program sol = new Program();
+            TreeNode root = new TreeNode(10);
+
+            root.left = new TreeNode(9);
+            root.right = new TreeNode(11);
+
+            root.left.left = new TreeNode(7);
+            root.left.right = new TreeNode(8);
+
+            root.right.right = new TreeNode(13);
+            root.right.left = new TreeNode(12);
+
+            TreeNode q = new TreeNode(10);
+
+            root.left = new TreeNode(9);
+            root.right = new TreeNode(11);
+
+            root.left.left = new TreeNode(7);
+            root.left.right = new TreeNode(8);
+
+            root.right.right = new TreeNode(13);
+            root.right.left = new TreeNode(12);
+
+            TreeNode p = new TreeNode(10);
+
+            root.left = new TreeNode(9);
+            root.right = new TreeNode(11);
+
+            root.left.left = new TreeNode(7);
+            root.left.right = new TreeNode(8);
+
+            root.right.right = new TreeNode(13);
+            root.right.left = new TreeNode(12);
+
+
+            //PrintList(root);
+
+            Console.WriteLine("**************");
+             //sol.Insert(8);
+             //sol.Insert(9);
+             //sol.Insert(10);
+            
+             
+
+            // Print the tree after insertions
+
+            PrintList(root);
+            Console.WriteLine("**************");
+            
+            sol.InvertTree(root);
+            PrintList(root);
+
+            Console.WriteLine("**************");
+            sol.InvertTreeOrder(root);
+
+            PrintList(root);
+
+            var lenght =  sol.MaxDepth(root);
+            Console.WriteLine($"The lenght of the MaxDepth of this TreeNode is: {lenght}");
+
+            Console.WriteLine("**************");
+
+            var depth = sol.MaxDepthNumber(root);
+            Console.WriteLine($"The lenght of the MaxDepth of this TreeNode is: {depth}");
+           
+            Console.WriteLine("**************");
+           var valid =  sol.sameTree(p, q);
+            Console.WriteLine(valid);
+
+
+            Console.WriteLine("**************");
+            var tree = sol.subTree(p, q);
+            Console.WriteLine(tree);
+
+
+        }
+    
+
+        public class TreeNode
+        {
+            public int value;
+           
+            public TreeNode left;
+            public TreeNode right;
+            // public bool isDeleted;
+
+            public TreeNode(int value)
+            {
+                this.value = value;
+                
+                left = null;
+                right = null;
+                //  isDeleted = false;
+            }
+        }
+
+        
+       
+        public TreeNode InsertNode(TreeNode node, int value)
+        {
+            if(node == null)
+            {
+                return new TreeNode(value);
+            }
+
+            if(value < node.value)
+            {
+                node.left = InsertNode(node.left, value);
+            }
+            else
+            {
+                {
+                    node.right = InsertNode(node.right, value); 
+                }
+            }
+
+            return node;
+
+        }
+
+        public void Insert(int value)
+        {
+          
+            root = InsertNode(root, value);
+
+        }
+
+        
+
+        public static void PrintList(TreeNode root)
+        {
+            InOrderPrint(root);
+        }
+		
+
+        public static void InOrderPrint(TreeNode node)
+        {
+            if(node != null)
+            {
+                InOrderPrint(node.left);
+                Console.WriteLine(node.value);
+                InOrderPrint(node.right);
+            }
+        }
+		
+
+        public class isDeleted
+        {
+            public bool isDelete;
+
+            public isDeleted()
+            {
+                this.isDelete = true;
+            }
+
+        }
+    }     
+    
+}
+
+      

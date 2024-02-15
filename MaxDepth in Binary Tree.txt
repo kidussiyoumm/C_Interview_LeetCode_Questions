@@ -1,0 +1,62 @@
+ Given the root of a binary tree, return its maximum depth.
+
+A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+ 
+
+Example 1: Input: root = [3,9,20,null,null,15,7]
+Output: 3
+
+ public int MaxDepth(TreeNode root)
+        {
+            if (root == null) return 0; 
+
+            int leftDepth = MaxDepth(root.left);
+            int rightDepth = MaxDepth(root.right);
+
+            return Math.Max(leftDepth, rightDepth + 1);//the plus one is 1 is for the root
+            //the maths.max will keep going down and add up all the nodes
+
+
+        }
+
+        public int MaxDepthNumber(TreeNode root)
+        {
+            if (root == null) return 0;
+
+            Queue<TreeNode> queue = new Queue<TreeNode>();
+            queue.Enqueue(root); //takes the root value so its 1
+
+            int depth = 0;
+
+            while(queue.Count > 0)//1 > 0
+            {
+                int levelSize = queue.Count;
+
+                for(int i = 0; i < levelSize; i++)
+                {
+
+                    //The variable current now holds the root node of the binary tree,
+                    //and you can perform operations on this node or access its properties. 
+                    TreeNode current = queue.Dequeue(); 
+
+                    //So this is checking the values of the left and right side and adding it to the queue
+                    //then from there add to the depth
+                    if(current.left != null)
+                    {
+                        queue.Enqueue(current.left);
+                    }
+
+                    if(current.right != null)
+                    {
+                        queue.Enqueue(current.right);
+                    }
+                }
+
+               
+                    depth++;
+                
+            }
+            return depth;
+
+        }

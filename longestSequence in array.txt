@@ -1,0 +1,30 @@
+longestSequence of repeating numbers
+ public int longestSequence(int[] ints)
+        {
+            if (ints.Length == 0)
+            {
+                return 0;
+            }
+
+            Array.Sort(ints);
+            int count = 0;
+            int result = 0;
+
+            for (int i = 0; i < ints.Length - 1; i++)
+            {
+                if (ints[i] + 1 == ints[i + 1])
+                {
+                    count++;
+                    result = Math.Max(result, count);
+
+                }
+                else
+                {
+                    count = 0;
+                }
+            }
+
+            return result + 1;
+
+
+        }

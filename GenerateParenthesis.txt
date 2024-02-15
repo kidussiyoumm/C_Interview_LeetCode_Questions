@@ -1,0 +1,38 @@
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+
+ 
+
+Example 1:
+
+Input: n = 3
+Output: ["((()))","(()())","(())()","()(())","()()()"]
+
+
+
+ public static IList<string> GenerateParenthesis(int n)
+        {
+           
+            List<string> result = new List<string>();
+            backTrack("", 0, 0, n, result);
+            return result;
+        }
+        public static void backTrack(string current, int left,  int right, int n, List<string> result)
+        {
+            if(current.Length == 2 * n)
+            {
+                result.Add(current);
+                return;
+            }
+
+            if(left < n)
+            {
+                backTrack(current + "(" , left + 1,  right, n , result);
+            }
+
+            if(right < left)
+            {
+                backTrack(current + ")", left, right +1 , n , result);
+            }
+
+        }
+

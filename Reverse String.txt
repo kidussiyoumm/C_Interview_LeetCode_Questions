@@ -1,0 +1,54 @@
+Reverse a List
+
+public string ReverseString(string s)
+        {
+            if (s == null)
+            {
+                return null;
+            }
+
+            string current = "";
+            int strLength = s.Length - 1;
+            Queue<string> queue = new Queue<string>();
+
+            for (int i = strLength; i >= 0; i--)
+            {
+                if (s[i] != ' ')
+                {
+                    current = s[i] + current;
+                }
+                else if (current.Trim() != "")
+                {
+                    queue.Enqueue(current.Trim());
+                    current = ""; // Reset current for the next word
+                }
+            }
+
+            // Add the last word to the queue
+            if (current.Trim() != "")
+            {
+                queue.Enqueue(current.Trim());
+            }
+
+            // Reverse the words
+            string[] str = queue.ToArray();
+            Array.Reverse(str);
+
+            return string.Join(" ", str);
+        }
+}
+
+//Another way of making the samething. 
+   public string Reversestring2(string s)
+        {
+            if (s == null || s.Length == null)
+            {
+                return null;
+            }
+
+            string[] split = s.Split(' ');
+            Array.Reverse(split);
+             
+            return string.Join(" ", split); 
+        }
+}

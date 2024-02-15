@@ -1,0 +1,40 @@
+ Given the roots of two binary trees p and q, write a 
+ function to check if they are the same or not.
+
+Two binary trees are considered the same if they are structurally 
+identical, and the nodes have the same value.      
+
+Input: p = [1,2,3], q = [1,2,3]
+Output: true
+
+public bool sameTree(TreeNode p, TreeNode q)
+        {
+
+            if(p == null && q == null) return true;
+
+            if(p == null || q == null) return false;
+
+            if(p.value !=  q.value) return false;
+
+            return sameTree(p.left, q.left) && sameTree(p.right , q.right);
+                
+        }
+
+Given the roots of two binary trees root and subRoot, return true if there is a subtree of root 
+with the same structure and node values of subRoot and false otherwise.
+
+A subtree of a binary tree tree is a tree that consists of a node in tree and all of this node's
+ descendants. The tree tree could also be considered as a subtree of itself.
+ 
+ Input: root = [3,4,5,1,2], subRoot = [4,1,2]
+Output: true
+        public bool subTree(TreeNode root, TreeNode subroot)
+        {
+            if(root == null) return false;
+
+            if(sameTree(root , subroot)) return true;
+
+            return subTree(root.left, subroot) || subTree(root.right, subroot);
+
+  
+        }
