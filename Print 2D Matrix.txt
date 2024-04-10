@@ -1,0 +1,34 @@
+How to print 2D matrix 
+
+public class program
+{
+    static void Main(string[] args)
+    {
+        string[,] matrics = { { "RC1", "RC2", "RC3", "RC4" },
+                          { "RC5", "RC6", "RC7", "RC8"},
+                          { "RC9", "RC10", "RC11", "RC12"}
+                        };
+
+
+        PrintMatrix(matrics);
+
+
+        
+    }
+
+    static void PrintMatrix(string[,] matrix)
+    {
+
+
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                // Adjust spacing to align columns properly
+                Console.Write(matrix[i, j].PadRight(5));
+            }
+            Console.WriteLine(); // Move to the next row after printing all columns
+        }
+    }
+
+}
