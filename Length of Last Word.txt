@@ -1,0 +1,40 @@
+Length of Last Word
+
+Given a string s consisting of words and spaces, return the length of the last word in the string.
+
+A word is a maximal 
+substring
+ consisting of non-space characters only.
+
+ 
+
+Example 1:
+
+Input: s = "Hello World"
+Output: 5
+Explanation: The last word is "World" with length 5.
+
+
+Answer:
+
+public class Solution {
+    public int LengthOfLastWord(string s) {
+        if(s.Length == 0){
+            return 0;
+        }
+         
+            //this will trim all the spaces before and after the entire string
+            var trimed = s.Trim();
+
+            //this will give the last index of the chosen word from the right doing to left 
+            var lastIndex = trimed.LastIndexOf(' ');
+
+            //then this will chose the subtring from the string from the passed index or number in the method
+            var strings = trimed.Substring(lastIndex + 1);
+
+
+            return strings.Length;
+        
+        }
+        
+ }
