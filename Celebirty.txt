@@ -1,0 +1,58 @@
+Suppose you are at a party with n people labeled from 0 to n - 1 and among them, there may exist one  celebrity. The definition of a  celebrity is that all the other n - 1 people know the celebrity, but the celebrity does not know any of them.
+
+Now you want to find out who the celebrity is or verify that there is not one. You are only allowed to ask questions like: "Hi, A. Do you know B?" to get information about whether A knows B. You need to find out the celebrity (or verify there is not one) by asking as few questions as possible (in the asymptotic sense).
+
+You are given a helper function bool knows(a, b) that tells you whether a knows b. Implement a function int findCelebrity(n). There will be exactly one  celebrity if they are at the party.
+
+Return the  celebrity's label if there is a celebrity at the party. If there is no celebrity, return -1.
+
+
+// Dummy knows function for testing purposes
+bool Knows(int a, int b)
+{
+    // Implementation of knows(a, b) is not provided here.
+    // Assume this function correctly returns whether person 'a' knows person 'b'.
+    return true; // Placeholder implementation
+}
+
+int FindCelebrity(int n)
+{
+    // Step 1: Find the candidate
+    int candidate = 0;
+    for (int i = 1; i < n; i++)
+    {
+        if (Knows(candidate, i))
+        {
+            candidate = i;
+        }
+    }
+
+    // Step 2: Verify the candidate
+    for (int i = 0; i < n; i++)
+    {
+        if (i != candidate)
+        {
+            if (Knows(candidate, i) || !Knows(i, candidate))
+            {
+                return -1;
+            }
+        }
+    }
+
+    return candidate;
+}
+
+// Example usage
+public static void Main(string[] args)
+{
+    int n = 4; // Number of people at the party
+    int celebrity = FindCelebrity(n);
+    if (celebrity == -1)
+    {
+        Console.WriteLine("There is no celebrity at the party.");
+    }
+    else
+    {
+        Console.WriteLine("The celebrity is person " + celebrity);
+    }
+}

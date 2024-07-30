@@ -1,0 +1,57 @@
+Capitalize the first letter of each word.
+    public class practiceTest
+    {
+        public string firstLetterToCapital(string word)
+        {
+            if (string.IsNullOrEmpty(word))
+            {
+                return word; 
+            }
+
+            var capitializeNext = true;
+            char[] charsLetters = word.ToCharArray();
+
+
+            for (int i = 0; i <= charsLetters.Length -1; i++)
+            {
+                if (char.IsWhiteSpace(charsLetters[i]))
+                {
+                    capitializeNext = true;
+                }else if(capitializeNext){
+                    charsLetters[i] = char.ToUpper(charsLetters[i]);
+                    capitializeNext=false;
+                }
+                else
+                {
+                    charsLetters[i] = char.ToLower(charsLetters[i]);
+                }
+
+            }
+
+            return new string (charsLetters);
+
+        }
+
+
+    }
+
+
+    public class program
+    {
+        public static void Main(String[] args)
+        {
+
+            practiceTest solution = new practiceTest();
+
+
+            string input = "i love you";
+            string result = solution.firstLetterToCapital(input);
+            Console.WriteLine(result);
+
+
+        }
+
+
+
+    }
+}
