@@ -1,0 +1,43 @@
+IsSubsequence
+
+Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+
+A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
+
+
+Example 1:
+
+Input: s = "abc", t = "ahbgdc"
+Output: true
+public class program{
+     
+    public static void Main(String[] args)
+    {
+
+          practiceTest solution = new practiceTest();
+
+	   
+	            string s = "abc";
+         string t = "ahbfc";
+         var vlaue = solution.IsSubsequence(s, t);
+         Console.WriteLine($"This isSequence :{vlaue}");
+
+    }
+	
+	   public bool IsSubsequence(string s, string t)
+    {
+      int sPointer = 0;
+      int tPointer = 0;
+      int sLength = s.Length;
+      int tLenght = t.Length;
+
+      while (sPointer < sLength && tPointer < tLenght) {
+          if (s[sPointer] == t[tPointer])
+          {
+              sPointer++;
+          }
+          tPointer++;
+          } 
+      return sPointer == sLength; 
+    }
+}
